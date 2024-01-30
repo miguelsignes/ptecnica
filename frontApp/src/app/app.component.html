@@ -1,0 +1,73 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2>{{title}}</h2>
+      <form (ngSubmit)="enviarDatos()">
+        <div class="mb-3">
+          <label for="origen" class="form-label">Origen:</label>
+          <input type="text" class="form-control" id="origen" [(ngModel)]="origen" name="origen" required>
+        </div>
+        <div class="mb-3">
+          <label for="destino" class="form-label">Destino:</label>
+          <input type="text" class="form-control" id="destino" [(ngModel)]="destino" name="destino" required>
+        </div>
+        @if (!loader) {
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        } 
+         
+
+     </form>
+    </div>
+  </div>
+</div>
+
+@if (loader) {
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+}
+
+
+@if (combinedData) {
+ 
+  <div *ngFor="let flight of flights; index as i">
+    <div class="card allPlace">
+        <div class="card-body">
+            <div class="row justify-content-center">
+                <div class="col-md-4 leftPlace">
+                    <h5 class="card-title">Vuelo con: {{flight.airLine}}</h5>
+                    <p>Salida desde {{ displayOrigen }} con Destino en {{ displayDestino }}</p>
+                    <p class="card-text">Hora de salida {{flight.departureDate}} - Hora de llegada {{ flight.returnDate}}</p>
+                    <p class="card-text">Precio del billete {{flight.price}}</p>
+                </div>
+                
+                <div class="col-md-4 rightPlace">
+                  <p>El tiempo durante tu viaje a: {{ displayDestino }}  </p>
+                  <div class="row">
+                      <div class="col" *ngFor="let wt of weather; index as i">
+                          <ul class="list-unstyled">
+                              <li class="small-text">
+                                  <span>Fecha: {{ wt.date }}</span><br>
+                                  <span>Mínimas: {{wt.mintemp_c}} - Máximas: {{ wt.maxtemp_c }}</span><br>
+                                  <span>Velocidad del viento: {{ wt.maxwind_kph }}</span>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              
+            </div>
+        </div>
+    </div>
+</div>
+
+}
+@if (error) {
+
+  <div class="d-flex justify-content-center">
+      <span>Ha ocurrido un error...</span>
+  </div>
+}
+
