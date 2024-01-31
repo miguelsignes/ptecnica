@@ -70,26 +70,26 @@ class FlightServices {
     await page.locator(".e5F5td").wait();
     const flightInputs = await page.$$(".e5F5td");
 
-    await flightInputs[0].click({ count: 3, delay: 50 });
-    await page.keyboard.type(from, { delay: 150 });
+    await flightInputs[0].click({ count: 3, delay: 200 });
+    await page.keyboard.type(from, { delay: 200 });
 
     await page.keyboard.press("Enter");
 
-    await flightInputs[1].click({ delay: 50 });
-    await page.keyboard.type(to, { delay: 150 });
+    await flightInputs[1].click({ delay: 200 });
+    await page.keyboard.type(to, { delay: 200 });
 
     await page.keyboard.press("Enter");
 
     const datePickers = await page.waitForSelector(".FMXxAd");
-    await datePickers!.click({ delay: 150 });
+    await datePickers!.click({ delay: 200 });
 
     const dateFields = await page.$$(".FMXxAd");
 
-    await dateFields[2].click({ delay: 50 });
-    await page.keyboard.type(formattedDepartureDate, { delay: 150 });
+    await dateFields[2].click({ delay: 200 });
+    await page.keyboard.type(formattedDepartureDate, { delay: 200 });
 
-    await dateFields[3].click({ delay: 50 });
-    await page.keyboard.type(formattedReturnDate, { delay: 150 });
+    await dateFields[3].click({ delay: 200 });
+    await page.keyboard.type(formattedReturnDate, { delay: 200 });
 
     await page.waitForSelector(".qxcyof");
 
