@@ -45,13 +45,14 @@
                 
                 <div class="col-md-4 rightPlace">
                   <p>El tiempo durante tu viaje a: {{ displayDestino }}  </p>
+                  <p class="small-text">{{ displayDestino }} tiene una temperatura media de {{ weather[0].avgtemp_c }} C</p>
                   <div class="row">
                       <div class="col" *ngFor="let wt of weather; index as i">
                           <ul class="list-unstyled">
                               <li class="small-text">
                                   <span>Fecha: {{ wt.date }}</span><br>
-                                  <span>Mínimas: {{wt.mintemp_c}} - Máximas: {{ wt.maxtemp_c }}</span><br>
-                                  <span>Velocidad del viento: {{ wt.maxwind_kph }}</span>
+                                  <span>Mínimas: {{wt.mintemp_c}} C - Máximas: {{ wt.maxtemp_c }} C</span><br>
+                                  <span>Velocidad del viento: {{ wt.maxwind_kph }} kph</span>
                               </li>
                           </ul>
                       </div>
@@ -70,4 +71,5 @@
       <span>Ha ocurrido un error...</span>
   </div>
 }
+
 
