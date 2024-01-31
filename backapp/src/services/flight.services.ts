@@ -48,6 +48,8 @@ class FlightServices {
 
   private async inputInfo(page: Page, from: string, to: string) {
 
+    await this.removeGoogleConsent(page);
+
     const currentDate = new Date();
     currentDate.setDate(currentDate.getDate() + 1);
 
@@ -65,7 +67,7 @@ class FlightServices {
       day: "2-digit",
     }).format(currentDate);
 
-    await this.removeGoogleConsent(page);
+
 
     await page.locator(".e5F5td").wait();
     const flightInputs = await page.$$(".e5F5td");
